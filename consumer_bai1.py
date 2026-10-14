@@ -15,7 +15,7 @@ connection = pika.BlockingConnection(pika.ConnectionParameters(host=BROKER))
 channel = connection.channel()
 
 # Đảm bảo queue đã tồn tại trước khi lắng nghe
-channel.queue_declare(queue=QUEUE)
+channel.queue_declare(queue=QUEUE, durable=True)
 channel.basic_consume(queue=QUEUE, on_message_callback=on_message, auto_ack=True)
 print(f"Dang lang nghe queue: {QUEUE}...")
 
