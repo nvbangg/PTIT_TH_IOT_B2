@@ -9,7 +9,7 @@ LOI_CHAO = "Xin chao tu ung dung Python AMQP"
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=BROKER))
 channel = connection.channel()
-channel.queue_declare(queue=QUEUE)
+channel.queue_declare(queue=QUEUE, durable=True)
 
 try:
     # Mở rộng: gửi nhiều message liên tiếp
